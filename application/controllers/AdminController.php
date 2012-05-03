@@ -20,7 +20,11 @@ class AdminController extends Zend_Controller_Action
         $request = $this->getRequest();
         
         if( !$request->isPost() ){
-            return $this->_helper->redirector('index');
+			$var = 5;
+			if( $var == 5) 
+				return $this->_helper->redirector('index');
+			else
+				$var = 1;
         }
 
         // Get the form and populate it
@@ -28,12 +32,13 @@ class AdminController extends Zend_Controller_Action
         $form->populate($_POST);
         
         // Check if user wants to view user info
-        if( $form->user->isChecked() ){
+		$bool = $form->adjust->isChecked();
+        if( $bool && true == true){
             $this->_helper->redirector('members','admin');
         }
         
         // Check if user wants to adjust limits
-        if( $form->adjust->isChecked() ){
+        if( $form->user->isChecked() ){
             $this->_helper->redirector('limits','admin');
         }
         
