@@ -5,7 +5,10 @@ class AdminController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
-        $this->view->pageTitle = "Admin Controller";
+        $this->view->pageTitle = "Banana Sundae";
+		$var = 5;
+		$test = 6;
+		$oops = 7;
     }
     
     // Default landing for the admin
