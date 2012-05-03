@@ -5,7 +5,10 @@ class AdminController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
-        $this->view->pageTitle = "Admin Controller";
+        $this->view->pageTitle = "Banana Sundae";
+		$var = 5;
+		$test = 6;
+		$oops = 7;
     }
     
     // Default landing for the admin
@@ -20,11 +23,7 @@ class AdminController extends Zend_Controller_Action
         $request = $this->getRequest();
         
         if( !$request->isPost() ){
-			$var = 5;
-			if( $var == 5) 
-				return $this->_helper->redirector('index');
-			else
-				$var = 1;
+            return $this->_helper->redirector('index');
         }
 
         // Get the form and populate it
@@ -32,13 +31,12 @@ class AdminController extends Zend_Controller_Action
         $form->populate($_POST);
         
         // Check if user wants to view user info
-		$bool = $form->adjust->isChecked();
-        if( $bool && true == true){
+        if( $form->user->isChecked() ){
             $this->_helper->redirector('members','admin');
         }
         
         // Check if user wants to adjust limits
-        if( $form->user->isChecked() ){
+        if( $form->adjust->isChecked() ){
             $this->_helper->redirector('limits','admin');
         }
         
